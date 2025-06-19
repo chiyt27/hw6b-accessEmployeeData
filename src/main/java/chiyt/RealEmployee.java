@@ -7,9 +7,9 @@ public class RealEmployee implements Employee {
     private int id;
     private String name;
     private int age;
-    private String subordinateIds;
+    private List<Integer> subordinateIds;
 
-    public RealEmployee(int id, String name, int age, String subordinateIds) {
+    public RealEmployee(int id, String name, int age, List<Integer> subordinateIds) {
         this.id = id;
         this.name = name;
         this.age = age;
@@ -25,7 +25,8 @@ public class RealEmployee implements Employee {
     @Override
     public int getAge() { return age; }
 
-    public String getSubordinateIds() { return subordinateIds; }
+    @Override
+    public List<Integer> getSubordinateIds() { return subordinateIds; }
 
     @Override
     public List<Employee> getSubordinates() {

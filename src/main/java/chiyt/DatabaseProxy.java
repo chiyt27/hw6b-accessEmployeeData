@@ -25,7 +25,7 @@ public class DatabaseProxy implements Database {
         if ("1qaz2wsx".equals(password)) {
             Employee realEmployee = realDatabase.getEmployeeById(id);
             if (realEmployee != null) {
-                return new EmployeeProxy(realEmployee, this); // 返回 EmployeeProxy，以便達成延遲載入subordinates清單
+                return new EmployeeProxy(realEmployee, this); // 返回 EmployeeProxy，以便達成需求B3 延遲載入subordinates清單
             }
             return null;
         } else {
