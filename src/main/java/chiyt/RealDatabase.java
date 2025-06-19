@@ -1,7 +1,6 @@
 package chiyt;
 
 import java.io.*;
-import java.util.*;
 
 public class RealDatabase implements Database {
     private String filePath;
@@ -20,13 +19,8 @@ public class RealDatabase implements Database {
                 if (empId == id) {
                     String name = parts[1];
                     int age = Integer.parseInt(parts[2]);
-                    List<Integer> subIds = new ArrayList<>();
-                    if (parts.length > 3 && !parts[3].isEmpty()) {
-                        for (String s : parts[3].split(",")) {
-                            if (!s.isEmpty()) subIds.add(Integer.parseInt(s));
-                        }
-                    }
-                    return new RealEmployee(empId, name, age, subIds, this);
+                    String subordinateIds = parts.length > 3 ? parts[3] : "";
+                    return new RealEmployee(empId, name, age, subordinateIds);
                 }
             }
         } catch (IOException e) {

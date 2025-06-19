@@ -7,17 +7,13 @@ public class RealEmployee implements Employee {
     private int id;
     private String name;
     private int age;
-    private List<Integer> subordinateIds;
-    private List<Employee> subordinates;
-    private Database database;
+    private String subordinateIds;
 
-    public RealEmployee(int id, String name, int age, List<Integer> subordinateIds, Database database) {
+    public RealEmployee(int id, String name, int age, String subordinateIds) {
         this.id = id;
         this.name = name;
         this.age = age;
         this.subordinateIds = subordinateIds;
-        this.database = database;
-        this.subordinates = null; // Lazy load
     }
 
     @Override
@@ -29,15 +25,10 @@ public class RealEmployee implements Employee {
     @Override
     public int getAge() { return age; }
 
+    public String getSubordinateIds() { return subordinateIds; }
+
     @Override
     public List<Employee> getSubordinates() {
-        if (subordinates == null) {
-            subordinates = new ArrayList<>();
-            for (int subId : subordinateIds) {
-                Employee emp = database.getEmployeeById(subId);
-                if (emp != null) subordinates.add(emp);
-            }
-        }
-        return subordinates;
+        return new ArrayList<>(); // 由 Proxy 處理
     }
 }
