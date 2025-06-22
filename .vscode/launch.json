@@ -10,7 +10,7 @@
             "request": "launch",
             "mainClass": "${file}",
             "env": {
-                "PASSWORD": "1qaz2wsx",
+                "PASSWORD": "1qaz2wsx"
             }
         },
         {
@@ -18,9 +18,9 @@
             "name": "Client",
             "request": "launch",
             "mainClass": "chiyt.Client",
-            "projectName": "hw6a-relationship-analyzer",
+            "projectName": "hw6b-access-employee-data",
             "env": {
-                "PASSWORD": "1qaz2wsx",
+                "PASSWORD": "1qaz2wsx"
             }
         }
     ]
