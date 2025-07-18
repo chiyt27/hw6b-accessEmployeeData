@@ -7,13 +7,13 @@ public class RealEmployee implements Employee {
     private int id;
     private String name;
     private int age;
-    private List<Integer> subordinateIds;
+    private List<RealEmployee> subordinates;
 
-    public RealEmployee(int id, String name, int age, List<Integer> subordinateIds) {
+    public RealEmployee(int id, String name, int age, List<RealEmployee> subordinates) {
         this.id = id;
         this.name = name;
         this.age = age;
-        this.subordinateIds = subordinateIds;
+        this.subordinates = subordinates;
     }
 
     @Override
@@ -24,9 +24,6 @@ public class RealEmployee implements Employee {
 
     @Override
     public int getAge() { return age; }
-
-    @Override
-    public List<Integer> getSubordinateIds() { return subordinateIds; }
 
     @Override
     public List<Employee> getSubordinates() {

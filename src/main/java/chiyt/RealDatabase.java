@@ -27,7 +27,8 @@ public class RealDatabase implements Database {
                             if (!s.isEmpty()) subIds.add(Integer.parseInt(s));
                         }
                     }
-                    return new RealEmployee(empId, name, age, subIds);
+                    Employee emp = new RealEmployee(empId, name, age, new ArrayList<>());
+                    return new EmployeeProxy(emp, this, subIds);
                 }
             }
         } catch (IOException e) {

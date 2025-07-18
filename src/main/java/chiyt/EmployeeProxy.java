@@ -7,10 +7,12 @@ public class EmployeeProxy implements Employee {
     private final Employee realEmployee;
     private final Database database; // 用來查 subordinate
     private List<Employee> subordinates = null;
+    private List<Integer> subordinateIds;
 
-    public EmployeeProxy(Employee realEmployee, Database database) {
+    public EmployeeProxy(Employee realEmployee, Database database, List<Integer> subordinateIds) {
         this.realEmployee = realEmployee;
         this.database = database;
+        this.subordinateIds = subordinateIds;
     }
 
     @Override
@@ -23,13 +25,10 @@ public class EmployeeProxy implements Employee {
     public int getAge() { return realEmployee.getAge(); }
 
     @Override
-    public List<Integer> getSubordinateIds() { return realEmployee.getSubordinateIds(); }
-
-    @Override
     public List<Employee> getSubordinates() {
         if (subordinates == null) {
             subordinates = new ArrayList<>();
-            for (int subId : getSubordinateIds()) {
+            for (int subId : subordinateIds) {
                 Employee emp = database.getEmployeeById(subId);
                 if (emp!= null) {
                     subordinates.add(emp);

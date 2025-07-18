@@ -23,11 +23,7 @@ public class DatabaseProxy implements Database {
             if(this.realDatabase==null){
                 lazyInitialization();
             }
-            Employee realEmployee = realDatabase.getEmployeeById(id);
-            if (realEmployee != null) {
-                return new EmployeeProxy(realEmployee, this); // 返回 EmployeeProxy，以便達成需求B3 延遲載入subordinates清單
-            }
-            return null;
+            return realDatabase.getEmployeeById(id);
         } else {
             System.out.println("Access denied: Invalid PASSWORD.");
             return null;
